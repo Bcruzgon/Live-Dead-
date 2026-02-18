@@ -5,5 +5,13 @@ On these documents you can find the supplementary data from the research paper [
 **Item 1) Live/Dead Code Explained**  
 For the live/dead assay analysis reported, cell viability was quantified from fluorescence microscopy images of nuclei stained with DAPI (blue channel, C1), live cells with calcein-AM (green channel, C2), and dead cells or lipid nanoparticles (LNPs, red channel, C3), where the red-fluorescent LNPs added to the assay required specific overlay analysis with DAPI to distinguish true dead cell signals from nanoparticle artifacts. Nuclei were first segmented from the blue channel using Otsu thresholding followed by morphological opening/closing and contour filtering (50-1000 pixel area) to yield total cell count. Live cells were identified by thresholding the green channel and intersecting with the nuclei mask, counting contours (30-800 pixels); dead cells were similarly determined by intersecting the red channel threshold with nuclei, ensuring only nuclear-localized red signal (LNPs overlapping DAPI+) was counted to avoid cytoplasmic LNP contamination. Final viability percentage was calculated as (live cells / total nuclei × 100), with ambiguous nuclei (gray contours in overlays) excluded, and results visualized in per-image overlays where green contours marked live-dominant nuclei (green sum > 1.5× red sum), red contours marked dead/LNP-positive nuclei, and gray indicated neither signal dominance. Python code available in the supplementary files.
 
+### Step-by-Step Usage
+1. Place all `.nd` (Nikon NIS-Elements) image files in **one folder** (e.g., `images/`).
+2. Save the Python code below as `live_dead_analysis.py` in the **same folder**.
+3. Open terminal/command prompt in that folder.
+4. Run: `pip install nd2 numpy opencv-python matplotlib` (if not installed).
+5. Execute: `python live_dead_analysis.py`.
+6. Check output folder for viability results, overlays, and CSV summary.
+
 **Item 2) Synthesis Calculator**  
 KTP to Traus describes how we determined the -SH groups on the KTP after synthesis using the Traut's reagent [https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0011238_Trauts_Reag_UG.pdf](https://documents.thermofisher.com/TFS-Assets/LSG/manuals/MAN0011238_Trauts_Reag_UG.pdf). KTP-SH to LNPs book describes the ratios we used to formulate the LNP@KTP, using the 1 KTP + 10 Traut's -> KTP-SH reaction.
